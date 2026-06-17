@@ -1,205 +1,851 @@
 <!DOCTYPE html>
-<html lang="gu">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ઉત્સવ ફેશન - સ્ટોક ખાલી કરો આંદોલન</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Utsav Fashion - Stock Khali Karo Andolan. Premium collection clearance sale with special discounts on M & L sizes.">
+    <meta name="keywords" content="Utsav Fashion, Sale, Clearance, M Size, L Size, Fashion Store, Surat">
+    <meta name="author" content="Utsav Fashion">
+    <meta property="og:title" content="Utsav Fashion - Stock Khali Karo Andolan">
+    <meta property="og:description" content="Premium fashion sale with special discounts. Limited stock available!">
+    <meta property="og:type" content="website">
+    <title>Utsav Fashion - Stock Khali Karo Andolan</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
+        :root {
+            --primary-gold: #D4AF37;
+            --primary-dark: #1a1a1a;
+            --primary-cream: #FFF8DC;
+            --primary-warm: #E8A868;
+            --primary-accent: #B8860B;
+            --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --shadow-medium: 0 12px 48px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-body{
-background:#f7f7f7;
-color:#222;
-}
+        html {
+            scroll-behavior: smooth;
+        }
 
-.hero{
-background:linear-gradient(135deg,#8B0000,#C62828);
-color:white;
-text-align:center;
-padding:40px 20px;
-}
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #fafafa;
+            color: var(--primary-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-.hero img{
-max-width:220px;
-margin-bottom:20px;
-}
+        /* ==================== HERO SECTION ==================== */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fff8dc 0%, #f0e6d2 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
 
-.hero h1{
-font-size:2rem;
-margin-bottom:10px;
-}
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(60px);
+            pointer-events: none;
+            animation: gentleFloat 8s ease-in-out infinite;
+        }
 
-.hero p{
-font-size:1.1rem;
-margin-bottom:20px;
-}
+        @keyframes gentleFloat {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -55%) scale(1.05); }
+        }
 
-.btn{
-display:inline-block;
-padding:14px 24px;
-background:#25D366;
-color:white;
-text-decoration:none;
-border-radius:8px;
-font-weight:bold;
-}
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            max-width: 600px;
+            animation: fadeInDown 1s ease-out;
+        }
 
-.section{
-max-width:1200px;
-margin:auto;
-padding:30px 15px;
-}
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-.section h2{
-text-align:center;
-margin-bottom:20px;
-}
+        .logo-container {
+            margin-bottom: 2rem;
+            animation: slideDown 1s ease-out;
+        }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:15px;
-}
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-.card{
-background:white;
-padding:20px;
-border-radius:12px;
-text-align:center;
-box-shadow:0 2px 10px rgba(0,0,0,0.08);
-transition:0.3s;
-}
+        .main-logo {
+            width: 120px;
+            height: auto;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 10px 30px rgba(212, 175, 55, 0.2));
+        }
 
-.card:hover{
-transform:translateY(-5px);
-}
+        .sale-logo-container {
+            position: relative;
+            margin: 2rem 0;
+            display: inline-block;
+        }
 
-.card h3{
-margin-bottom:10px;
-}
+        .sale-logo-glow {
+            position: absolute;
+            inset: -20px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.4) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(30px);
+            animation: glowPulse 3s ease-in-out infinite;
+            pointer-events: none;
+        }
 
-.card a{
-display:inline-block;
-margin-top:10px;
-padding:10px 18px;
-background:#8B0000;
-color:white;
-text-decoration:none;
-border-radius:6px;
-}
+        @keyframes glowPulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.6;
+            }
+            50% {
+                transform: scale(1.15);
+                opacity: 1;
+            }
+        }
 
-.footer{
-background:#111;
-color:white;
-text-align:center;
-padding:25px;
-margin-top:40px;
-}
-</style>
+        .sale-logo {
+            width: 180px;
+            height: auto;
+            position: relative;
+            z-index: 2;
+            filter: drop-shadow(0 15px 40px rgba(212, 175, 55, 0.3));
+        }
+
+        /* Floating Sparkles */
+        .sparkle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, #D4AF37, #B8860B);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: sparkleFloat 3s ease-in-out infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes sparkleFloat {
+            0% {
+                opacity: 0;
+                transform: translate(0, 0) scale(0);
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translate(var(--tx), var(--ty)) scale(1);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin: 2rem 0 1rem;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+
+        .hero h2 {
+            font-size: clamp(1.2rem, 5vw, 2rem);
+            font-weight: 600;
+            color: var(--primary-warm);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
+            color: #666;
+            margin-top: 1.5rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        /* ==================== MARQUEE SECTION ==================== */
+        .marquee-section {
+            padding: 3rem 0;
+            background: #ffffff;
+            border-top: 1px solid #f0f0f0;
+            border-bottom: 1px solid #f0f0f0;
+            overflow: hidden;
+        }
+
+        .marquee-container {
+            display: flex;
+            gap: 1rem;
+            animation: scroll-left 40s linear infinite;
+            padding: 0.5rem 0;
+        }
+
+        .marquee-container.reverse {
+            animation: scroll-right 40s linear infinite;
+            direction: rtl;
+        }
+
+        .marquee-container.reverse img {
+            direction: ltr;
+        }
+
+        @keyframes scroll-left {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        @keyframes scroll-right {
+            from {
+                transform: translateX(-50%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        .marquee-image {
+            flex: 0 0 auto;
+            width: clamp(150px, 25vw, 280px);
+            height: clamp(150px, 25vw, 280px);
+            object-fit: cover;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .marquee-container:hover {
+            animation-play-state: paused;
+        }
+
+        .marquee-container.reverse:hover {
+            animation-play-state: paused;
+        }
+
+        .marquee-image:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-medium);
+        }
+
+        /* Duplicate for seamless loop */
+        .marquee-container {
+            width: max-content;
+        }
+
+        /* ==================== SIZE SELECTION SECTION ==================== */
+        .size-section {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #f9f6f3 0%, #fff8dc 100%);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(1.8rem, 6vw, 2.5rem);
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 3rem;
+            letter-spacing: -0.5px;
+        }
+
+        .size-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .size-card {
+            background: linear-gradient(135deg, #ffffff 0%, #fff8dc 100%);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .size-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at top right, rgba(212, 175, 55, 0.1), transparent);
+            opacity: 0;
+            transition: var(--transition);
+            pointer-events: none;
+        }
+
+        .size-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .size-card:hover::before {
+            opacity: 1;
+        }
+
+        .size-card h3 {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .size-card p {
+            color: #888;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, #D4AF37, #B8860B);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.4);
+            background: linear-gradient(135deg, #E8A868, #D4AF37);
+        }
+
+        .cta-button:active {
+            transform: translateY(0);
+        }
+
+        /* ==================== MAPS SECTION ==================== */
+        .maps-section {
+            padding: 4rem 2rem;
+            background: #ffffff;
+            text-align: center;
+        }
+
+        .maps-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: linear-gradient(135deg, #D4AF37, #B8860B);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 6px 25px rgba(212, 175, 55, 0.3);
+            font-size: 1.05rem;
+            margin-top: 1.5rem;
+        }
+
+        .maps-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.4);
+        }
+
+        /* ==================== SOCIAL SECTION ==================== */
+        .social-section {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #f9f6f3 0%, #fff8dc 100%);
+            text-align: center;
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .social-btn {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #D4AF37, #B8860B);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            font-size: 1.8rem;
+            transition: var(--transition);
+            box-shadow: var(--shadow-soft);
+            border: 2px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .social-btn:hover {
+            transform: translateY(-6px) scale(1.1);
+            box-shadow: var(--shadow-medium);
+            background: linear-gradient(135deg, #E8A868, #D4AF37);
+        }
+
+        /* ==================== CONTACT SECTION ==================== */
+        .contact-section {
+            padding: 4rem 2rem;
+            background: #ffffff;
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .info-box {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #f9f6f3 0%, #fff8dc 100%);
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .info-box h4 {
+            color: var(--primary-warm);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .info-box p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* ==================== FLOATING WHATSAPP BUTTON ==================== */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: var(--transition);
+            z-index: 1000;
+            border: 3px solid white;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.15) translateY(-5px);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
+        }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 85vh;
+                padding: 1.5rem;
+            }
+
+            .main-logo {
+                width: 90px;
+            }
+
+            .sale-logo {
+                width: 140px;
+            }
+
+            .marquee-image {
+                width: clamp(100px, 20vw, 200px);
+                height: clamp(100px, 20vw, 200px);
+            }
+
+            .size-section,
+            .maps-section,
+            .social-section,
+            .contact-section {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .social-buttons {
+                gap: 1.5rem;
+            }
+
+            .social-btn {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .whatsapp-btn {
+                width: 55px;
+                height: 55px;
+                bottom: 1.5rem;
+                right: 1.5rem;
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                margin-top: 1rem;
+            }
+
+            .marquee-image {
+                width: clamp(80px, 18vw, 150px);
+                height: clamp(80px, 18vw, 150px);
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+
+            .whatsapp-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+        }
+
+        /* ==================== ACCESSIBILITY ==================== */
+        a:focus, button:focus {
+            outline: 2px solid var(--primary-gold);
+            outline-offset: 2px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        /* ==================== PRINT STYLES ==================== */
+        @media print {
+            .whatsapp-btn {
+                display: none;
+            }
+        }
+    </style>
 </head>
-
 <body>
+    <!-- SECTION 1: HERO -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="logo-container">
+                <img src="logo.png" alt="Utsav Fashion Logo" class="main-logo">
+            </div>
 
-<section class="hero">
+            <div class="sale-logo-container">
+                <div class="sale-logo-glow"></div>
+                <img src="sale-logo.png" alt="Sale Logo" class="sale-logo">
+            </div>
 
-<h1>🚨 સ્ટોક ખાલી કરો આંદોલન 🚨</h1>
+            <h1>સ્ટોક ખાલી કરો આંદોલન</h1>
+            <h2>M & L સાઇઝ વાળી બહેનો એક થાઓ</h2>
+            <p class="hero-subtitle">મર્યાદિત સ્ટોક • ખાસ ડિસ્કાઉન્ટ • પહેલા આવો પહેલા મેળવો</p>
+        </div>
+    </section>
 
-<p>
-M & L સાઇઝ વાળી બહેનો એક થાઓ
-</p>
+    <!-- SECTION 2: MOVING PRODUCT SHOWCASE -->
+    <section class="marquee-section">
+        <!-- Top Row - Scrolling Left -->
+        <div class="marquee-container">
+            <img src="1.jpg" alt="Product 1" class="marquee-image">
+            <img src="2.jpg" alt="Product 2" class="marquee-image">
+            <img src="3.jpg" alt="Product 3" class="marquee-image">
+            <img src="4.jpg" alt="Product 4" class="marquee-image">
+            <img src="5.jpg" alt="Product 5" class="marquee-image">
+            <img src="6.png" alt="Product 6" class="marquee-image">
+            <img src="7.jpeg" alt="Product 7" class="marquee-image">
+            <img src="8.jpeg" alt="Product 8" class="marquee-image">
+            <img src="9.jpeg" alt="Product 9" class="marquee-image">
+            <img src="10.jpeg" alt="Product 10" class="marquee-image">
+            <!-- Duplicate for seamless loop -->
+            <img src="1.jpg" alt="Product 1" class="marquee-image">
+            <img src="2.jpg" alt="Product 2" class="marquee-image">
+            <img src="3.jpg" alt="Product 3" class="marquee-image">
+            <img src="4.jpg" alt="Product 4" class="marquee-image">
+            <img src="5.jpg" alt="Product 5" class="marquee-image">
+            <img src="6.png" alt="Product 6" class="marquee-image">
+            <img src="7.jpeg" alt="Product 7" class="marquee-image">
+            <img src="8.jpeg" alt="Product 8" class="marquee-image">
+            <img src="9.jpeg" alt="Product 9" class="marquee-image">
+            <img src="10.jpeg" alt="Product 10" class="marquee-image">
+        </div>
 
-<a class="btn"
-href="https://wa.me/919979966582">
-WhatsApp Order
-</a>
+        <!-- Bottom Row - Scrolling Right -->
+        <div class="marquee-container reverse">
+            <img src="10.jpeg" alt="Product 10" class="marquee-image">
+            <img src="9.jpeg" alt="Product 9" class="marquee-image">
+            <img src="8.jpeg" alt="Product 8" class="marquee-image">
+            <img src="7.jpeg" alt="Product 7" class="marquee-image">
+            <img src="6.png" alt="Product 6" class="marquee-image">
+            <img src="5.jpg" alt="Product 5" class="marquee-image">
+            <img src="4.jpg" alt="Product 4" class="marquee-image">
+            <img src="3.jpg" alt="Product 3" class="marquee-image">
+            <img src="2.jpg" alt="Product 2" class="marquee-image">
+            <img src="1.jpg" alt="Product 1" class="marquee-image">
+            <!-- Duplicate for seamless loop -->
+            <img src="10.jpeg" alt="Product 10" class="marquee-image">
+            <img src="9.jpeg" alt="Product 9" class="marquee-image">
+            <img src="8.jpeg" alt="Product 8" class="marquee-image">
+            <img src="7.jpeg" alt="Product 7" class="marquee-image">
+            <img src="6.png" alt="Product 6" class="marquee-image">
+            <img src="5.jpg" alt="Product 5" class="marquee-image">
+            <img src="4.jpg" alt="Product 4" class="marquee-image">
+            <img src="3.jpg" alt="Product 3" class="marquee-image">
+            <img src="2.jpg" alt="Product 2" class="marquee-image">
+            <img src="1.jpg" alt="Product 1" class="marquee-image">
+        </div>
+    </section>
 
-</section>
+    <!-- SECTION 3: SIZE SELECTION -->
+    <section class="size-section" id="sizes">
+        <h2 class="section-title">તમારો સાઇઝ પસંદ કરો</h2>
+        <div class="size-cards">
+            <div class="size-card">
+                <h3>M Size Collection</h3>
+                <p>Explore our curated M size collection with premium pieces and exclusive deals.</p>
+                <a href="https://drive.google.com/drive/folders/10EwOiHvlCjxg9mspllKSfMLvkPVd2EWn?usp=drive_link" target="_blank" class="cta-button">Browse Collection</a>
+            </div>
+            <div class="size-card">
+                <h3>L Size Collection</h3>
+                <p>Discover our premium L size range with exclusive styles and special discounts.</p>
+                <a href="https://drive.google.com/drive/folders/1_zCe0rB8XvoTkQDM-prFxlIuPTFbrLla?usp=drive_link" target="_blank" class="cta-button">Browse Collection</a>
+            </div>
+        </div>
+    </section>
 
-<section class="section">
+    <!-- SECTION 4: VISIT OUR STORE -->
+    <section class="maps-section" id="location">
+        <h2 class="section-title">અમારા સ્ટોરની મુલાકાત લો</h2>
+        <p style="color: #666; font-size: 1.05rem;">Find us at our prime location in Surat. We're open 10 AM - 9 PM daily.</p>
+        <a href="https://maps.app.goo.gl/ceRyvvn5DEu3j35Q8" target="_blank" class="maps-button">📍 Open in Maps</a>
+    </section>
 
-<h2>સેલ કલેક્શન</h2>
+    <!-- SECTION 5: FOLLOW US -->
+    <section class="social-section" id="social">
+        <h2 class="section-title">અમને અનુસરો</h2>
+        <p style="color: #666;">Stay updated with our latest collections and exclusive offers.</p>
+        <div class="social-buttons">
+            <a href="https://www.instagram.com/utsavfashion2021" target="_blank" class="social-btn" title="Follow on Instagram" aria-label="Instagram">📷</a>
+            <a href="https://www.facebook.com/profile.php?id=61584136935182" target="_blank" class="social-btn" title="Follow on Facebook" aria-label="Facebook">f</a>
+            <a href="https://g.page/r/CeZD2n9KW6CVEAE/review" target="_blank" class="social-btn" title="Google Review" aria-label="Google Review">⭐</a>
+        </div>
+    </section>
 
-<div class="grid">
+    <!-- SECTION 6: CONTACT -->
+    <section class="contact-section" id="contact">
+        <div class="contact-content">
+            <h2 class="section-title">અમારો સંપર્ક કરો</h2>
+            <div class="contact-info">
+                <div class="info-box">
+                    <h4>🏪 સ્ટોર</h4>
+                    <p>Utsav Fashion</p>
+                </div>
+                <div class="info-box">
+                    <h4>📍 સરનામું</h4>
+                    <p>78/A, Prabhunagar-1, Opp. Uday Nagar-2, Katargam Road, Surat, India, 395004</p>
+                </div>
+                <div class="info-box">
+                    <h4>📞 ફોન</h4>
+                    <p><a href="tel:9979966582" style="color: var(--primary-warm); text-decoration: none;">9979966582</a></p>
+                </div>
+                <div class="info-box">
+                    <h4>🕐 સમય</h4>
+                    <p>10 AM - 9 PM<br>દર દિવસ</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<div class="card">
-<h3>₹799 Collection</h3>
-<a href="#">View Collection</a>
-</div>
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <a href="https://wa.me/919979966582?text=Hello%20Utsav%20Fashion,%20I%20am%20interested%20in%20your%20sale%20collection." target="_blank" class="whatsapp-btn" title="Chat on WhatsApp" aria-label="WhatsApp">💬</a>
 
-<div class="card">
-<h3>₹899 Collection</h3>
-<a href="#">View Collection</a>
-</div>
+    <script>
+        // Generate floating sparkles around sale logo on page load
+        function createSparkles() {
+            const saleLogoContainer = document.querySelector('.sale-logo-container');
+            const sparkleCount = window.innerWidth > 768 ? 12 : 6;
 
-<div class="card">
-<h3>₹949 Collection</h3>
-<a href="#">View Collection</a>
-</div>
+            for (let i = 0; i < sparkleCount; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
 
-<div class="card">
-<h3>₹999 Collection</h3>
-<a href="#">View Collection</a>
-</div>
+                // Random position around the container
+                const angle = (i / sparkleCount) * Math.PI * 2;
+                const distance = 120 + Math.random() * 60;
+                const startX = Math.cos(angle) * distance;
+                const startY = Math.sin(angle) * distance;
+                const endX = Math.cos(angle) * (distance + 80);
+                const endY = Math.sin(angle) * (distance + 80);
 
-<div class="card">
-<h3>₹1050 Collection</h3>
-<a href="#">View Collection</a>
-</div>
+                sparkle.style.setProperty('--tx', `${endX}px`);
+                sparkle.style.setProperty('--ty', `${endY}px`);
+                sparkle.style.left = `calc(50% + ${startX}px)`;
+                sparkle.style.top = `calc(50% + ${startY}px)`;
+                sparkle.style.animationDelay = `${i * 0.2}s`;
+                sparkle.style.animationDuration = `${2 + Math.random() * 1}s`;
 
-<div class="card">
-<h3>₹1099 Collection</h3>
-<a href="#">View Collection</a>
-</div>
+                saleLogoContainer.appendChild(sparkle);
+            }
+        }
 
-<div class="card">
-<h3>₹1150 Collection</h3>
-<a href="#">View Collection</a>
-</div>
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', createSparkles);
 
-<div class="card">
-<h3>₹1199 Collection</h3>
-<a href="#">View Collection</a>
-</div>
+        // Recreate sparkles on window resize
+        window.addEventListener('resize', () => {
+            const container = document.querySelector('.sale-logo-container');
+            const existingSparkles = container.querySelectorAll('.sparkle');
+            existingSparkles.forEach(s => s.remove());
+            createSparkles();
+        });
 
-<div class="card">
-<h3>₹1249 Collection</h3>
-<a href="#">View Collection</a>
-</div>
+        // Smooth scroll behavior (fallback for older browsers)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const element = document.querySelector(href);
+                    if (element) {
+                        element.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
 
-<div class="card">
-<h3>₹1449 Collection</h3>
-<a href="#">View Collection</a>
-</div>
+        // Add ripple effect to buttons on click
+        document.querySelectorAll('.cta-button, .maps-button, .social-btn, .whatsapp-btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
 
-<div class="card">
-<h3>₹1499 Collection</h3>
-<a href="#">View Collection</a>
-</div>
+                const ripple = document.createElement('span');
+                ripple.style.position = 'absolute';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.style.width = '0px';
+                ripple.style.height = '0px';
+                ripple.style.borderRadius = '50%';
+                ripple.style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
+                ripple.style.pointerEvents = 'none';
 
-<div class="card">
-<h3>₹1549 Collection</h3>
-<a href="#">View Collection</a>
-</div>
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
+                this.appendChild(ripple);
 
-<div class="card">
-<h3>₹1599 Collection</h3>
-<a href="#">View Collection</a>
-</div>
+                const duration = 600;
+                const maxSize = Math.max(rect.width, rect.height) * 2;
 
-</div>
+                ripple.animate([
+                    { width: '0px', height: '0px', opacity: 1 },
+                    { width: maxSize + 'px', height: maxSize + 'px', opacity: 0 }
+                ], {
+                    duration: duration,
+                    easing: 'ease-out'
+                });
 
-</section>
+                setTimeout(() => ripple.remove(), duration);
+            });
+        });
 
-<div class="footer">
-<p>ઉત્સવ ફેશન | Surat</p>
-<p>WhatsApp: 99799 66582</p>
-</div>
+        // Lazy load images
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                            img.removeAttribute('data-src');
+                        }
+                        observer.unobserve(img);
+                    }
+                });
+            });
 
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+
+        // Performance: Pause animations when page is not visible
+        document.addEventListener('visibilitychange', () => {
+            const marqueeContainers = document.querySelectorAll('.marquee-container');
+            if (document.hidden) {
+                marqueeContainers.forEach(container => {
+                    container.style.animationPlayState = 'paused';
+                });
+            } else {
+                marqueeContainers.forEach(container => {
+                    container.style.animationPlayState = 'running';
+                });
+            }
+        });
+    </script>
 </body>
 </html>

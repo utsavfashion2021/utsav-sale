@@ -118,8 +118,11 @@
 
         .sale-logo-container {
             position: relative;
-            margin: 1.2rem 0 1.5rem 0;
-            display: inline-block;
+            margin: 1.2rem auto 1.5rem auto;
+            display: block;
+            width: calc(100% - 40px);
+            max-width: 90vw;
+            padding: 0 20px;
         }
 
         .sale-logo-glow {
@@ -144,11 +147,13 @@
         }
 
         .sale-logo {
-            width: 280px;
+            width: 100%;
+            max-width: 100%;
             height: auto;
             position: relative;
             z-index: 2;
             filter: drop-shadow(0 15px 40px rgba(212, 175, 55, 0.3));
+            display: block;
         }
 
         /* Floating Sparkles */
@@ -614,8 +619,9 @@
                 width: 150px;
             }
 
-            .sale-logo {
-                width: 220px;
+            .sale-logo-container {
+                width: calc(100% - 30px);
+                padding: 0 15px;
             }
 
             .quick-selection {
@@ -677,16 +683,14 @@
             }
 
             .sale-logo-container {
-                margin: 0.8rem 0 1.2rem 0;
+                margin: 0.8rem auto 1.2rem auto;
+                width: calc(100% - 24px);
+                padding: 0 12px;
             }
 
             .main-logo {
                 width: 140px;
                 margin-bottom: 0.6rem;
-            }
-
-            .sale-logo {
-                width: 200px;
             }
 
             .hero-subtitle {
@@ -1005,40 +1009,6 @@
 
                 setTimeout(() => ripple.remove(), duration);
             });
-        });
-
-        // Lazy load images
-        if ('IntersectionObserver' in window) {
-            const imageObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        if (img.dataset.src) {
-                            img.src = img.dataset.src;
-                            img.removeAttribute('data-src');
-                        }
-                        observer.unobserve(img);
-                    }
-                });
-            });
-
-            document.querySelectorAll('img[data-src]').forEach(img => {
-                imageObserver.observe(img);
-            });
-        }
-
-        // Performance: Pause animations when page is not visible
-        document.addEventListener('visibilitychange', () => {
-            const marqueeContainers = document.querySelectorAll('.marquee-container');
-            if (document.hidden) {
-                marqueeContainers.forEach(container => {
-                    container.style.animationPlayState = 'paused';
-                });
-            } else {
-                marqueeContainers.forEach(container => {
-                    container.style.animationPlayState = 'running';
-                });
-            }
         });
     </script>
 </body>

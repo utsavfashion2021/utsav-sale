@@ -313,29 +313,43 @@
             z-index: 1;
         }
 
-        /* ==================== MARQUEE SECTION ==================== */
-        .marquee-section {
-            padding: 3rem 0;
-            background: #ffffff;
-            border-top: 1px solid #f0f0f0;
-            border-bottom: 1px solid #f0f0f0;
+        /* ==================== PRICE MARQUEE SECTION (TOP) ==================== */
+        .price-marquee-section {
+            padding: 2rem 0;
+            background: linear-gradient(135deg, #fff8dc 0%, #f0e6d2 100%);
             overflow: hidden;
+            position: relative;
         }
 
-        .marquee-container {
+        .price-marquee-section::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 60px;
+            background: linear-gradient(90deg, rgba(255, 248, 220, 1) 0%, rgba(255, 248, 220, 0) 100%);
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .price-marquee-section::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 60px;
+            background: linear-gradient(90deg, rgba(255, 248, 220, 0) 0%, rgba(255, 248, 220, 1) 100%);
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .price-marquee-container {
             display: flex;
-            gap: 1rem;
-            animation: scroll-left 45s linear infinite;
+            gap: 1.5rem;
+            animation: scroll-left 60s linear infinite;
             padding: 0.5rem 0;
-        }
-
-        .marquee-container.reverse {
-            animation: scroll-right 45s linear infinite;
-            direction: rtl;
-        }
-
-        .marquee-container.reverse img {
-            direction: ltr;
         }
 
         @keyframes scroll-left {
@@ -347,6 +361,140 @@
             }
         }
 
+        .price-marquee-container:hover {
+            animation-play-state: paused;
+        }
+
+        .price-card {
+            flex: 0 0 auto;
+            width: clamp(200px, 28vw, 280px);
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #fff8dc 100%);
+            border-radius: 16px;
+            box-shadow: var(--shadow-soft);
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .price-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.15), transparent);
+            border-radius: 50%;
+            filter: blur(40px);
+        }
+
+        .price-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-medium);
+            border-color: rgba(212, 175, 55, 0.4);
+        }
+
+        .price-card-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .actual-price {
+            font-size: 0.95rem;
+            color: #888;
+            margin-bottom: 0.5rem;
+            text-decoration: line-through;
+            text-decoration-thickness: 2px;
+            font-weight: 500;
+        }
+
+        .save-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #D4AF37, #B8860B);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin: 0.6rem 0;
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .sale-price {
+            font-size: clamp(1.8rem, 5vw, 2.4rem);
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin: 0.6rem 0 0;
+            position: relative;
+            animation: pricePulse 2.5s ease-in-out infinite;
+        }
+
+        @keyframes pricePulse {
+            0%, 100% {
+                text-shadow: 0 0 0 rgba(212, 175, 55, 0);
+            }
+            50% {
+                text-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+            }
+        }
+
+        .sale-price::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+            animation: shimmer 2s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .divider-down {
+            font-size: 1.2rem;
+            color: var(--primary-warm);
+            margin: 0.4rem 0;
+            font-weight: 700;
+        }
+
+        /* ==================== PRODUCT IMAGE MARQUEE SECTION (BOTTOM) ==================== */
+        .product-marquee-section {
+            padding: 3rem 0;
+            background: #ffffff;
+            border-top: 1px solid #f0f0f0;
+            border-bottom: 1px solid #f0f0f0;
+            overflow: hidden;
+        }
+
+        .product-marquee-container {
+            display: flex;
+            gap: 1.5rem;
+            animation: scroll-left 50s linear infinite;
+            padding: 1rem 0;
+        }
+
+        .product-marquee-container.reverse {
+            animation: scroll-right 50s linear infinite;
+            direction: rtl;
+        }
+
+        .product-marquee-container.reverse img {
+            direction: ltr;
+        }
+
         @keyframes scroll-right {
             from {
                 transform: translateX(-50%);
@@ -356,32 +504,34 @@
             }
         }
 
-        .marquee-image {
+        .product-image {
             flex: 0 0 auto;
-            width: clamp(160px, 26vw, 300px);
-            height: clamp(160px, 26vw, 300px);
+            width: clamp(180px, 28vw, 320px);
+            height: clamp(180px, 28vw, 320px);
             object-fit: cover;
-            border-radius: 12px;
+            border-radius: 16px;
             cursor: pointer;
             transition: var(--transition);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            box-shadow: var(--shadow-soft);
+            border: 2px solid rgba(212, 175, 55, 0.1);
         }
 
-        .marquee-container:hover {
+        .product-marquee-container:hover {
             animation-play-state: paused;
         }
 
-        .marquee-container.reverse:hover {
+        .product-marquee-container.reverse:hover {
             animation-play-state: paused;
         }
 
-        .marquee-image:hover {
-            transform: scale(1.06);
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+        .product-image:hover {
+            transform: scale(1.08);
+            box-shadow: var(--shadow-medium);
+            border-color: rgba(212, 175, 55, 0.3);
         }
 
         /* Duplicate for seamless loop */
-        .marquee-container {
+        .product-marquee-container {
             width: max-content;
         }
 
@@ -656,9 +806,30 @@
                 padding: 1.2rem 1.8rem;
             }
 
-            .marquee-image {
-                width: clamp(140px, 22vw, 240px);
-                height: clamp(140px, 22vw, 240px);
+            .price-marquee-section {
+                padding: 1.5rem 0;
+            }
+
+            .price-card {
+                width: clamp(180px, 24vw, 240px);
+                padding: 1.2rem;
+            }
+
+            .sale-price {
+                font-size: clamp(1.6rem, 4vw, 2rem);
+            }
+
+            .actual-price {
+                font-size: 0.85rem;
+            }
+
+            .product-image {
+                width: clamp(160px, 24vw, 280px);
+                height: clamp(160px, 24vw, 280px);
+            }
+
+            .product-marquee-section {
+                padding: 2rem 0;
             }
 
             .size-section,
@@ -731,13 +902,44 @@
                 max-width: none;
             }
 
-            .marquee-image {
-                width: clamp(120px, 20vw, 200px);
-                height: clamp(120px, 20vw, 200px);
+            .price-marquee-section {
+                padding: 1rem 0;
             }
 
-            .marquee-section {
-                padding: 2rem 0;
+            .price-marquee-container {
+                gap: 1rem;
+            }
+
+            .price-card {
+                width: clamp(160px, 22vw, 220px);
+                padding: 1rem;
+            }
+
+            .actual-price {
+                font-size: 0.8rem;
+            }
+
+            .sale-price {
+                font-size: clamp(1.4rem, 3.5vw, 1.8rem);
+            }
+
+            .save-badge {
+                padding: 0.3rem 0.6rem;
+                font-size: 0.7rem;
+            }
+
+            .divider-down {
+                font-size: 1rem;
+                margin: 0.3rem 0;
+            }
+
+            .product-image {
+                width: clamp(140px, 22vw, 240px);
+                height: clamp(140px, 22vw, 240px);
+            }
+
+            .product-marquee-section {
+                padding: 1.5rem 0;
             }
 
             .contact-info {
@@ -776,9 +978,34 @@
                 font-size: 0.75rem;
             }
 
-            .marquee-image {
-                width: clamp(100px, 18vw, 160px);
-                height: clamp(100px, 18vw, 160px);
+            .price-card {
+                width: clamp(140px, 20vw, 200px);
+                padding: 0.8rem;
+            }
+
+            .actual-price {
+                font-size: 0.75rem;
+                margin-bottom: 0.3rem;
+            }
+
+            .sale-price {
+                font-size: 1.2rem;
+            }
+
+            .save-badge {
+                padding: 0.25rem 0.5rem;
+                font-size: 0.65rem;
+                margin: 0.4rem 0;
+            }
+
+            .divider-down {
+                font-size: 0.9rem;
+                margin: 0.2rem 0;
+            }
+
+            .product-image {
+                width: clamp(120px, 20vw, 200px);
+                height: clamp(120px, 20vw, 200px);
             }
         }
 
@@ -839,56 +1066,366 @@
         </div>
     </section>
 
-    <!-- SECTION 2: MOVING PRODUCT SHOWCASE -->
-    <section class="marquee-section">
-        <!-- Top Row - Scrolling Left -->
-        <div class="marquee-container">
-            <img src="1.jpg" alt="Product 1" class="marquee-image">
-            <img src="2.jpg" alt="Product 2" class="marquee-image">
-            <img src="3.jpg" alt="Product 3" class="marquee-image">
-            <img src="4.jpg" alt="Product 4" class="marquee-image">
-            <img src="5.jpg" alt="Product 5" class="marquee-image">
-            <img src="6.png" alt="Product 6" class="marquee-image">
-            <img src="7.jpeg" alt="Product 7" class="marquee-image">
-            <img src="8.jpeg" alt="Product 8" class="marquee-image">
-            <img src="9.jpeg" alt="Product 9" class="marquee-image">
-            <img src="10.jpeg" alt="Product 10" class="marquee-image">
+    <!-- SECTION 2A: PRICE MARQUEE (TOP) -->
+    <section class="price-marquee-section">
+        <div class="price-marquee-container">
+            <!-- Price Card 1: ₹450 → ₹699 (Save ₹249) -->
+            <div class="price-card">
+                <div class="price-card-content">
+                    <div class="actual-price">₹450</div>
+                    <div class="save-badge">↓ SAVE ₹249 ↓</div>
+                    <div class="sale-price">₹699</div>
+                    <div class="divider-down">↓</div>
+                </div>
+            </div>
+
+            <!-- Price Card 2: ₹599 → ₹999 (Save ₹400) -->
+            <div class="price-card">
+                <div class="price-card-content">
+                    <div class="actual-price">₹599</div>
+                    <div class="save-badge">↓ SAVE ₹400 ↓</div>
+                    <div class="sale-price">₹999</div>
+                    <div class="divider-down">↓</div>
+                </div>
+            </div>
+
+            <!-- Price Card 3: ₹650 → ₹1099 (Save ₹449) -->
+            <div class="price-card">
+                <div class="price-card-content">
+                    <div class="actual-price">₹650</div>
+                    <div class="save-badge">↓ SAVE ₹449 ↓</div>
+                    <div class="sale-price">₹1099</div>
+                    <div class="divider-down">↓</div>
+                </div>
+            </div>
+
+            <!-- Price Card 4: ₹750 → ₹1399 (Save ₹649) -->
+            <div class="price-card">
+                <div class="price-card-content">
+                    <div class="actual-price">₹750</div>
+                    <div class="save-badge">↓ SAVE ₹649 ↓</div>
+                    <div class="sale-price">₹1399</div>
+                    <div class="divider-down">↓</div>
+                </div>
+            </div>
+
+            <!-- Price Card 5: ₹850 → ₹1599 (Save ₹749) -->
+            <div class="price-card">
+                <div class="price-card-content">
+                    <div class="actual-price">₹850</div>
+                    <div class="save-badge">↓ SAVE ₹749 ↓</div>
+                    <div class="sale-price">₹1599</div>
+                    <div class="divider-down">↓</div>
+                </div>
+            </div>
+
+            <!-- Price Card 6: ₹900 → ₹799 (Save ₹101) -->
+            <div class="price-card">
+                <div class="price-card-content">
+                    <div class="actual-price">₹900</div>
+                    <div class="save-badge">↓ SAVE ₹101 ↓</div>
+                    <div class="sale-price">₹799</div>
+                    <div class="divider-down">↓</div>
+                </div>
+            </div>
+
+            <!-- Price Card 7: ₹1000 → ₹899 (Save ₹101) -->
+            <div class="price-card">
+                <div class="price-card-content">
+                    <div class="actual-price">₹1000</div>
+                    <div class="save-badge">↓ SAVE ₹101 ↓</div>
+                    <div class="sale-price">₹899</div>
+                    <div class="divider-down">↓</div>
+                </div>
+            </div>
+
+            <!-- Price Card 8: ₹1050 → ₹949 (Save ₹101) -->
+            <div class="price-card">
+                <div class="price-card-content">
+                    <div class="actual-price">₹1050</div>
+                    <div class="save-badge">↓ SAVE ₹101 ↓</div>
+                    <div class="sale-price">₹949</div>
+                    <div class="divider-down">↓</div>
+                </div>
+            </div>
+
+            <!-- Price Card 9: ₹1100 → ₹999 (Save ₹101) -->
+            <div class="price-card">
+                <div class="price-card-content">
+                    <div class="actual-price">₹1100</div>
+                    <div class="save-badge">↓ SAVE ₹101 ↓</div>
+                    <div class="sale-price">₹999</div>
+                    <div class="divider-down">↓</div>
+                </div>
+            </div>
+
+            <!-- Price Card 10: ₹1150 → ₹1050 (Save ₹100) -->
+            <div class="price-card">
+                <div class="price-card-content">
+                    <div class="actual-price">₹1150</div>
+                    <div class="save-badge">↓ SAVE ₹100 ↓</div>
+                    <div class="sale-price">₹1050</div>
+                    <div class="divider-down">↓</div>
+                </div>
+            </div>
+
+            <!-- Price Card 11: ₹1200 → ₹1099 (Save ₹101) -->
+            <div class="price-card">
+                <div class="price-card-content">
+                    <div class="actual-price">₹1200</div>
+                    <div class="save-badge">↓ SAVE ₹101 ↓</div>
+                    <div class="sale-price">₹1099</div>
+                    <div class="divider-down">↓</div>
+                </div>
+            </div>
+
+            <!-- Price Card 12: ₹1250 → ₹1150 (Save ₹100) -->
+            <div class="price-card">
+                <div class="price-card-content">
+                    <div class="actual-price">₹1250</div>
+                    <div class="save-badge">↓ SAVE ₹100 ↓</div>
+                    <div class="sale-price">₹1150</div>
+                    <div class="divider-down">↓</div>
+                </div>
+            </div>
+
+            <!-- Price Card 13: ₹1350 → ₹1199 (Save ₹151) -->
+            <div class="price-card">
+                <div class="price-card-content">
+                    <div class="actual-price">₹1350</div>
+                    <div class="save-badge">↓ SAVE ₹151 ↓</div>
+                    <div class="sale-price">₹1199</div>
+                    <div class="divider-down">↓</div>
+                </div>
+            </div>
+
+            <!-- Price Card 14: ₹1450 → ₹1249 (Save ₹201) -->
+            <div class="price-card">
+                <div class="price-card-content">
+                    <div class="actual-price">₹1450</div>
+                    <div class="save-badge">↓ SAVE ₹201 ↓</div>
+                    <div class="sale-price">₹1249</div>
+                    <div class="divider-down">↓</div>
+                </div>
+            </div>
+
+            <!-- Price Card 15: ₹1650 → ₹1449 (Save ₹201) -->
+            <div class="price-card">
+                <div class="price-card-content">
+                    <div class="actual-price">₹1650</div>
+                    <div class="save-badge">↓ SAVE ₹201 ↓</div>
+                    <div class="sale-price">₹1449</div>
+                    <div class="divider-down">↓</div>
+                </div>
+            </div>
+
+            <!-- Price Card 16: ₹1750 → ₹1549 (Save ₹201) -->
+            <div class="price-card">
+                <div class="price-card-content">
+                    <div class="actual-price">₹1750</div>
+                    <div class="save-badge">↓ SAVE ₹201 ↓</div>
+                    <div class="sale-price">₹1549</div>
+                    <div class="divider-down">↓</div>
+                </div>
+            </div>
+
             <!-- Duplicate for seamless loop -->
-            <img src="1.jpg" alt="Product 1" class="marquee-image">
-            <img src="2.jpg" alt="Product 2" class="marquee-image">
-            <img src="3.jpg" alt="Product 3" class="marquee-image">
-            <img src="4.jpg" alt="Product 4" class="marquee-image">
-            <img src="5.jpg" alt="Product 5" class="marquee-image">
-            <img src="6.png" alt="Product 6" class="marquee-image">
-            <img src="7.jpeg" alt="Product 7" class="marquee-image">
-            <img src="8.jpeg" alt="Product 8" class="marquee-image">
-            <img src="9.jpeg" alt="Product 9" class="marquee-image">
-            <img src="10.jpeg" alt="Product 10" class="marquee-image">
+            <div class="price-card">
+                <div class="price-card-content">
+                    <div class="actual-price">₹450</div>
+                    <div class="save-badge">↓ SAVE ₹249 ↓</div>
+                    <div class="sale-price">₹699</div>
+                    <div class="divider-down">↓</div>
+                </div>
+            </div>
+
+            <div class="price-card">
+                <div class="price-card-content">
+                    <div class="actual-price">₹599</div>
+                    <div class="save-badge">↓ SAVE ₹400 ↓</div>
+                    <div class="sale-price">₹999</div>
+                    <div class="divider-down">↓</div>
+                </div>
+            </div>
+
+            <div class="price-card">
+                <div class="price-card-content">
+                    <div class="actual-price">₹650</div>
+                    <div class="save-badge">↓ SAVE ₹449 ↓</div>
+                    <div class="sale-price">₹1099</div>
+                    <div class="divider-down">↓</div>
+                </div>
+            </div>
+
+            <div class="price-card">
+                <div class="price-card-content">
+                    <div class="actual-price">₹750</div>
+                    <div class="save-badge">↓ SAVE ₹649 ↓</div>
+                    <div class="sale-price">₹1399</div>
+                    <div class="divider-down">↓</div>
+                </div>
+            </div>
+
+            <div class="price-card">
+                <div class="price-card-content">
+                    <div class="actual-price">₹850</div>
+                    <div class="save-badge">↓ SAVE ₹749 ↓</div>
+                    <div class="sale-price">₹1599</div>
+                    <div class="divider-down">↓</div>
+                </div>
+            </div>
+
+            <div class="price-card">
+                <div class="price-card-content">
+                    <div class="actual-price">₹900</div>
+                    <div class="save-badge">↓ SAVE ₹101 ↓</div>
+                    <div class="sale-price">₹799</div>
+                    <div class="divider-down">↓</div>
+                </div>
+            </div>
+
+            <div class="price-card">
+                <div class="price-card-content">
+                    <div class="actual-price">₹1000</div>
+                    <div class="save-badge">↓ SAVE ₹101 ↓</div>
+                    <div class="sale-price">₹899</div>
+                    <div class="divider-down">↓</div>
+                </div>
+            </div>
+
+            <div class="price-card">
+                <div class="price-card-content">
+                    <div class="actual-price">₹1050</div>
+                    <div class="save-badge">↓ SAVE ₹101 ↓</div>
+                    <div class="sale-price">₹949</div>
+                    <div class="divider-down">↓</div>
+                </div>
+            </div>
+
+            <div class="price-card">
+                <div class="price-card-content">
+                    <div class="actual-price">₹1100</div>
+                    <div class="save-badge">↓ SAVE ₹101 ↓</div>
+                    <div class="sale-price">₹999</div>
+                    <div class="divider-down">↓</div>
+                </div>
+            </div>
+
+            <div class="price-card">
+                <div class="price-card-content">
+                    <div class="actual-price">₹1150</div>
+                    <div class="save-badge">↓ SAVE ₹100 ↓</div>
+                    <div class="sale-price">₹1050</div>
+                    <div class="divider-down">↓</div>
+                </div>
+            </div>
+
+            <div class="price-card">
+                <div class="price-card-content">
+                    <div class="actual-price">₹1200</div>
+                    <div class="save-badge">↓ SAVE ₹101 ↓</div>
+                    <div class="sale-price">₹1099</div>
+                    <div class="divider-down">↓</div>
+                </div>
+            </div>
+
+            <div class="price-card">
+                <div class="price-card-content">
+                    <div class="actual-price">₹1250</div>
+                    <div class="save-badge">↓ SAVE ₹100 ↓</div>
+                    <div class="sale-price">₹1150</div>
+                    <div class="divider-down">↓</div>
+                </div>
+            </div>
+
+            <div class="price-card">
+                <div class="price-card-content">
+                    <div class="actual-price">₹1350</div>
+                    <div class="save-badge">↓ SAVE ₹151 ↓</div>
+                    <div class="sale-price">₹1199</div>
+                    <div class="divider-down">↓</div>
+                </div>
+            </div>
+
+            <div class="price-card">
+                <div class="price-card-content">
+                    <div class="actual-price">₹1450</div>
+                    <div class="save-badge">↓ SAVE ₹201 ↓</div>
+                    <div class="sale-price">₹1249</div>
+                    <div class="divider-down">↓</div>
+                </div>
+            </div>
+
+            <div class="price-card">
+                <div class="price-card-content">
+                    <div class="actual-price">₹1650</div>
+                    <div class="save-badge">↓ SAVE ₹201 ↓</div>
+                    <div class="sale-price">₹1449</div>
+                    <div class="divider-down">↓</div>
+                </div>
+            </div>
+
+            <div class="price-card">
+                <div class="price-card-content">
+                    <div class="actual-price">₹1750</div>
+                    <div class="save-badge">↓ SAVE ₹201 ↓</div>
+                    <div class="sale-price">₹1549</div>
+                    <div class="divider-down">↓</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2B: PRODUCT IMAGE MARQUEE (BOTTOM) -->
+    <section class="product-marquee-section">
+        <!-- Top Row - Scrolling Left -->
+        <div class="product-marquee-container">
+            <img src="1.jpg" alt="Product 1" class="product-image">
+            <img src="2.jpg" alt="Product 2" class="product-image">
+            <img src="3.jpg" alt="Product 3" class="product-image">
+            <img src="4.jpg" alt="Product 4" class="product-image">
+            <img src="5.jpg" alt="Product 5" class="product-image">
+            <img src="6.png" alt="Product 6" class="product-image">
+            <img src="7.jpeg" alt="Product 7" class="product-image">
+            <img src="8.jpeg" alt="Product 8" class="product-image">
+            <img src="9.jpeg" alt="Product 9" class="product-image">
+            <img src="10.jpeg" alt="Product 10" class="product-image">
+            <!-- Duplicate for seamless loop -->
+            <img src="1.jpg" alt="Product 1" class="product-image">
+            <img src="2.jpg" alt="Product 2" class="product-image">
+            <img src="3.jpg" alt="Product 3" class="product-image">
+            <img src="4.jpg" alt="Product 4" class="product-image">
+            <img src="5.jpg" alt="Product 5" class="product-image">
+            <img src="6.png" alt="Product 6" class="product-image">
+            <img src="7.jpeg" alt="Product 7" class="product-image">
+            <img src="8.jpeg" alt="Product 8" class="product-image">
+            <img src="9.jpeg" alt="Product 9" class="product-image">
+            <img src="10.jpeg" alt="Product 10" class="product-image">
         </div>
 
         <!-- Bottom Row - Scrolling Right -->
-        <div class="marquee-container reverse">
-            <img src="10.jpeg" alt="Product 10" class="marquee-image">
-            <img src="9.jpeg" alt="Product 9" class="marquee-image">
-            <img src="8.jpeg" alt="Product 8" class="marquee-image">
-            <img src="7.jpeg" alt="Product 7" class="marquee-image">
-            <img src="6.png" alt="Product 6" class="marquee-image">
-            <img src="5.jpg" alt="Product 5" class="marquee-image">
-            <img src="4.jpg" alt="Product 4" class="marquee-image">
-            <img src="3.jpg" alt="Product 3" class="marquee-image">
-            <img src="2.jpg" alt="Product 2" class="marquee-image">
-            <img src="1.jpg" alt="Product 1" class="marquee-image">
+        <div class="product-marquee-container reverse">
+            <img src="10.jpeg" alt="Product 10" class="product-image">
+            <img src="9.jpeg" alt="Product 9" class="product-image">
+            <img src="8.jpeg" alt="Product 8" class="product-image">
+            <img src="7.jpeg" alt="Product 7" class="product-image">
+            <img src="6.png" alt="Product 6" class="product-image">
+            <img src="5.jpg" alt="Product 5" class="product-image">
+            <img src="4.jpg" alt="Product 4" class="product-image">
+            <img src="3.jpg" alt="Product 3" class="product-image">
+            <img src="2.jpg" alt="Product 2" class="product-image">
+            <img src="1.jpg" alt="Product 1" class="product-image">
             <!-- Duplicate for seamless loop -->
-            <img src="10.jpeg" alt="Product 10" class="marquee-image">
-            <img src="9.jpeg" alt="Product 9" class="marquee-image">
-            <img src="8.jpeg" alt="Product 8" class="marquee-image">
-            <img src="7.jpeg" alt="Product 7" class="marquee-image">
-            <img src="6.png" alt="Product 6" class="marquee-image">
-            <img src="5.jpg" alt="Product 5" class="marquee-image">
-            <img src="4.jpg" alt="Product 4" class="marquee-image">
-            <img src="3.jpg" alt="Product 3" class="marquee-image">
-            <img src="2.jpg" alt="Product 2" class="marquee-image">
-            <img src="1.jpg" alt="Product 1" class="marquee-image">
+            <img src="10.jpeg" alt="Product 10" class="product-image">
+            <img src="9.jpeg" alt="Product 9" class="product-image">
+            <img src="8.jpeg" alt="Product 8" class="product-image">
+            <img src="7.jpeg" alt="Product 7" class="product-image">
+            <img src="6.png" alt="Product 6" class="product-image">
+            <img src="5.jpg" alt="Product 5" class="product-image">
+            <img src="4.jpg" alt="Product 4" class="product-image">
+            <img src="3.jpg" alt="Product 3" class="product-image">
+            <img src="2.jpg" alt="Product 2" class="product-image">
+            <img src="1.jpg" alt="Product 1" class="product-image">
         </div>
     </section>
 

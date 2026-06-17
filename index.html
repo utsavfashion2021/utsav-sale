@@ -43,13 +43,13 @@
 
         /* ==================== HERO SECTION ==================== */
         .hero {
-            min-height: 100vh;
+            min-height: auto;
             background: linear-gradient(135deg, #fff8dc 0%, #f0e6d2 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
+            padding: 2rem 2rem 2.5rem 2rem;
             position: relative;
             overflow: hidden;
         }
@@ -60,9 +60,9 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
             border-radius: 50%;
             filter: blur(60px);
             pointer-events: none;
@@ -71,17 +71,34 @@
 
         @keyframes gentleFloat {
             0%, 100% { transform: translate(-50%, -50%) scale(1); }
-            50% { transform: translate(-50%, -55%) scale(1.05); }
+            50% { transform: translate(-50%, -52%) scale(1.05); }
         }
 
         .hero-content {
             text-align: center;
             z-index: 10;
-            max-width: 600px;
+            max-width: 100%;
             animation: fadeInDown 1s ease-out;
+            width: 100%;
         }
 
         @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo-container {
+            margin-bottom: 1.2rem;
+            animation: slideDown 1s ease-out;
+        }
+
+        @keyframes slideDown {
             from {
                 opacity: 0;
                 transform: translateY(-30px);
@@ -92,39 +109,23 @@
             }
         }
 
-        .logo-container {
-            margin-bottom: 2rem;
-            animation: slideDown 1s ease-out;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         .main-logo {
-            width: 120px;
+            width: 180px;
             height: auto;
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.8rem;
             filter: drop-shadow(0 10px 30px rgba(212, 175, 55, 0.2));
         }
 
         .sale-logo-container {
             position: relative;
-            margin: 2rem 0;
+            margin: 1.2rem 0 1.5rem 0;
             display: inline-block;
         }
 
         .sale-logo-glow {
             position: absolute;
-            inset: -20px;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.4) 0%, transparent 70%);
+            inset: -25px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.3) 0%, transparent 70%);
             border-radius: 50%;
             filter: blur(30px);
             animation: glowPulse 3s ease-in-out infinite;
@@ -134,16 +135,16 @@
         @keyframes glowPulse {
             0%, 100% {
                 transform: scale(1);
-                opacity: 0.6;
+                opacity: 0.5;
             }
             50% {
-                transform: scale(1.15);
-                opacity: 1;
+                transform: scale(1.1);
+                opacity: 0.8;
             }
         }
 
         .sale-logo {
-            width: 180px;
+            width: 280px;
             height: auto;
             position: relative;
             z-index: 2;
@@ -153,13 +154,13 @@
         /* Floating Sparkles */
         .sparkle {
             position: absolute;
-            width: 8px;
-            height: 8px;
+            width: 6px;
+            height: 6px;
             background: radial-gradient(circle, #D4AF37, #B8860B);
             border-radius: 50%;
             pointer-events: none;
             animation: sparkleFloat 3s ease-in-out infinite;
-            opacity: 0.8;
+            opacity: 0.7;
         }
 
         @keyframes sparkleFloat {
@@ -177,27 +178,133 @@
         }
 
         .hero h1 {
-            font-size: clamp(2rem, 8vw, 3.5rem);
+            font-size: clamp(1.8rem, 7vw, 2.8rem);
             font-weight: 700;
             color: var(--primary-dark);
-            margin: 2rem 0 1rem;
+            margin: 0.8rem 0 0.6rem;
             letter-spacing: -0.5px;
             line-height: 1.2;
         }
 
         .hero h2 {
-            font-size: clamp(1.2rem, 5vw, 2rem);
+            font-size: clamp(1rem, 4vw, 1.6rem);
             font-weight: 600;
             color: var(--primary-warm);
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.8rem;
         }
 
         .hero-subtitle {
-            font-size: clamp(0.9rem, 3vw, 1.1rem);
-            color: #666;
-            margin-top: 1.5rem;
+            font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+            color: #888;
+            margin-bottom: 1.5rem;
             font-weight: 500;
             letter-spacing: 0.3px;
+        }
+
+        /* ==================== QUICK SIZE SELECTION ==================== */
+        .quick-selection {
+            padding: 0 2rem 2.5rem 2rem;
+            background: linear-gradient(135deg, #fff8dc 0%, #f0e6d2 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1.2rem;
+            position: relative;
+            z-index: 5;
+        }
+
+        .quick-selection-label {
+            font-size: 0.9rem;
+            color: #888;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .size-buttons-container {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            width: 100%;
+            flex-wrap: wrap;
+            animation: slideUp 0.8s ease-out 0.3s both;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .size-button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem 2.2rem;
+            background: linear-gradient(135deg, #ffffff 0%, #fff8dc 100%);
+            border-radius: 14px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow-soft);
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            text-decoration: none;
+            color: inherit;
+            min-width: 160px;
+            position: relative;
+            overflow: hidden;
+            flex: 1;
+            max-width: 220px;
+        }
+
+        .size-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), transparent);
+            opacity: 0;
+            transition: var(--transition);
+            pointer-events: none;
+        }
+
+        .size-button:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-medium);
+            border-color: rgba(212, 175, 55, 0.4);
+        }
+
+        .size-button:hover::before {
+            opacity: 1;
+        }
+
+        .size-button:active {
+            transform: translateY(-2px);
+        }
+
+        .size-button-label {
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 0.3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .size-button-text {
+            font-size: 0.8rem;
+            color: #999;
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
         }
 
         /* ==================== MARQUEE SECTION ==================== */
@@ -212,12 +319,12 @@
         .marquee-container {
             display: flex;
             gap: 1rem;
-            animation: scroll-left 40s linear infinite;
+            animation: scroll-left 45s linear infinite;
             padding: 0.5rem 0;
         }
 
         .marquee-container.reverse {
-            animation: scroll-right 40s linear infinite;
+            animation: scroll-right 45s linear infinite;
             direction: rtl;
         }
 
@@ -245,12 +352,13 @@
 
         .marquee-image {
             flex: 0 0 auto;
-            width: clamp(150px, 25vw, 280px);
-            height: clamp(150px, 25vw, 280px);
+            width: clamp(160px, 26vw, 300px);
+            height: clamp(160px, 26vw, 300px);
             object-fit: cover;
             border-radius: 12px;
             cursor: pointer;
             transition: var(--transition);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
         }
 
         .marquee-container:hover {
@@ -262,8 +370,8 @@
         }
 
         .marquee-image:hover {
-            transform: scale(1.05);
-            box-shadow: var(--shadow-medium);
+            transform: scale(1.06);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
         }
 
         /* Duplicate for seamless loop */
@@ -275,6 +383,7 @@
         .size-section {
             padding: 4rem 2rem;
             background: linear-gradient(135deg, #f9f6f3 0%, #fff8dc 100%);
+            display: none;
         }
 
         .section-title {
@@ -498,21 +607,34 @@
         /* ==================== RESPONSIVE ==================== */
         @media (max-width: 768px) {
             .hero {
-                min-height: 85vh;
-                padding: 1.5rem;
+                padding: 1.8rem 1.5rem 2rem 1.5rem;
             }
 
             .main-logo {
-                width: 90px;
+                width: 150px;
             }
 
             .sale-logo {
-                width: 140px;
+                width: 220px;
+            }
+
+            .quick-selection {
+                padding: 0 1.5rem 2rem 1.5rem;
+            }
+
+            .size-buttons-container {
+                gap: 1rem;
+            }
+
+            .size-button {
+                min-width: 140px;
+                max-width: 180px;
+                padding: 1.2rem 1.8rem;
             }
 
             .marquee-image {
-                width: clamp(100px, 20vw, 200px);
-                height: clamp(100px, 20vw, 200px);
+                width: clamp(140px, 22vw, 240px);
+                height: clamp(140px, 22vw, 240px);
             }
 
             .size-section,
@@ -541,14 +663,57 @@
             }
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 600px) {
+            .hero {
+                padding: 1.5rem 1.2rem 1.8rem 1.2rem;
+            }
+
             .hero h1 {
-                margin-top: 1rem;
+                margin: 0.6rem 0 0.4rem;
+            }
+
+            .logo-container {
+                margin-bottom: 1rem;
+            }
+
+            .sale-logo-container {
+                margin: 0.8rem 0 1.2rem 0;
+            }
+
+            .main-logo {
+                width: 140px;
+                margin-bottom: 0.6rem;
+            }
+
+            .sale-logo {
+                width: 200px;
+            }
+
+            .hero-subtitle {
+                margin-bottom: 1.2rem;
+            }
+
+            .quick-selection {
+                padding: 0 1.2rem 2rem 1.2rem;
+            }
+
+            .size-buttons-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .size-button {
+                width: 100%;
+                max-width: none;
             }
 
             .marquee-image {
-                width: clamp(80px, 18vw, 150px);
-                height: clamp(80px, 18vw, 150px);
+                width: clamp(120px, 20vw, 200px);
+                height: clamp(120px, 20vw, 200px);
+            }
+
+            .marquee-section {
+                padding: 2rem 0;
             }
 
             .contact-info {
@@ -559,6 +724,37 @@
                 width: 50px;
                 height: 50px;
                 font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+
+            .hero h2 {
+                font-size: 0.95rem;
+            }
+
+            .hero-subtitle {
+                font-size: 0.8rem;
+            }
+
+            .sale-logo-glow {
+                inset: -15px;
+            }
+
+            .size-button-label {
+                font-size: 1rem;
+            }
+
+            .size-button-text {
+                font-size: 0.75rem;
+            }
+
+            .marquee-image {
+                width: clamp(100px, 18vw, 160px);
+                height: clamp(100px, 18vw, 160px);
             }
         }
 
@@ -601,6 +797,21 @@
             <h1>સ્ટોક ખાલી કરો આંદોલન</h1>
             <h2>M & L સાઇઝ વાળી બહેનો એક થાઓ</h2>
             <p class="hero-subtitle">મર્યાદિત સ્ટોક • ખાસ ડિસ્કાઉન્ટ • પહેલા આવો પહેલા મેળવો</p>
+        </div>
+    </section>
+
+    <!-- SECTION 1B: QUICK SIZE SELECTION -->
+    <section class="quick-selection" id="quick-sizes">
+        <p class="quick-selection-label">તમારો સાઇઝ પસંદ કરો</p>
+        <div class="size-buttons-container">
+            <a href="https://drive.google.com/drive/folders/10EwOiHvlCjxg9mspllKSfMLvkPVd2EWn?usp=drive_link" target="_blank" class="size-button">
+                <div class="size-button-label">M Size</div>
+                <div class="size-button-text">Collection</div>
+            </a>
+            <a href="https://drive.google.com/drive/folders/1_zCe0rB8XvoTkQDM-prFxlIuPTFbrLla?usp=drive_link" target="_blank" class="size-button">
+                <div class="size-button-label">L Size</div>
+                <div class="size-button-text">Collection</div>
+            </a>
         </div>
     </section>
 
@@ -657,31 +868,14 @@
         </div>
     </section>
 
-    <!-- SECTION 3: SIZE SELECTION -->
-    <section class="size-section" id="sizes">
-        <h2 class="section-title">તમારો સાઇઝ પસંદ કરો</h2>
-        <div class="size-cards">
-            <div class="size-card">
-                <h3>M Size Collection</h3>
-                <p>Explore our curated M size collection with premium pieces and exclusive deals.</p>
-                <a href="https://drive.google.com/drive/folders/10EwOiHvlCjxg9mspllKSfMLvkPVd2EWn?usp=drive_link" target="_blank" class="cta-button">Browse Collection</a>
-            </div>
-            <div class="size-card">
-                <h3>L Size Collection</h3>
-                <p>Discover our premium L size range with exclusive styles and special discounts.</p>
-                <a href="https://drive.google.com/drive/folders/1_zCe0rB8XvoTkQDM-prFxlIuPTFbrLla?usp=drive_link" target="_blank" class="cta-button">Browse Collection</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 4: VISIT OUR STORE -->
+    <!-- VISIT OUR STORE -->
     <section class="maps-section" id="location">
         <h2 class="section-title">અમારા સ્ટોરની મુલાકાત લો</h2>
         <p style="color: #666; font-size: 1.05rem;">Find us at our prime location in Surat. We're open 10 AM - 9 PM daily.</p>
         <a href="https://maps.app.goo.gl/ceRyvvn5DEu3j35Q8" target="_blank" class="maps-button">📍 Open in Maps</a>
     </section>
 
-    <!-- SECTION 5: FOLLOW US -->
+    <!-- FOLLOW US -->
     <section class="social-section" id="social">
         <h2 class="section-title">અમને અનુસરો</h2>
         <p style="color: #666;">Stay updated with our latest collections and exclusive offers.</p>
@@ -692,7 +886,7 @@
         </div>
     </section>
 
-    <!-- SECTION 6: CONTACT -->
+    <!-- CONTACT -->
     <section class="contact-section" id="contact">
         <div class="contact-content">
             <h2 class="section-title">અમારો સંપર્ક કરો</h2>
@@ -718,13 +912,13 @@
     </section>
 
     <!-- FLOATING WHATSAPP BUTTON -->
-    <a href="https://wa.me/919979966582?text=Hello%20Utsav%20Fashion,%20I%20am%20interested%20in%20your%20sale%20collection." target="_blank" class="whatsapp-btn" title="Chat on WhatsApp" aria-label="WhatsApp">💬</a>
+    <a href="https://wa.me/919979966582?text=Hello%20Utsav%20Fashion,%20I%20am%20interested%20in%20your%20sale%20collection." target="_blank" class="whatsapp-btn" title="Chat on WhatsApp" aria-label="Chat on WhatsApp">💬</a>
 
     <script>
         // Generate floating sparkles around sale logo on page load
         function createSparkles() {
             const saleLogoContainer = document.querySelector('.sale-logo-container');
-            const sparkleCount = window.innerWidth > 768 ? 12 : 6;
+            const sparkleCount = window.innerWidth > 768 ? 8 : 4;
 
             for (let i = 0; i < sparkleCount; i++) {
                 const sparkle = document.createElement('div');
@@ -732,17 +926,17 @@
 
                 // Random position around the container
                 const angle = (i / sparkleCount) * Math.PI * 2;
-                const distance = 120 + Math.random() * 60;
+                const distance = 100 + Math.random() * 50;
                 const startX = Math.cos(angle) * distance;
                 const startY = Math.sin(angle) * distance;
-                const endX = Math.cos(angle) * (distance + 80);
-                const endY = Math.sin(angle) * (distance + 80);
+                const endX = Math.cos(angle) * (distance + 70);
+                const endY = Math.sin(angle) * (distance + 70);
 
                 sparkle.style.setProperty('--tx', `${endX}px`);
                 sparkle.style.setProperty('--ty', `${endY}px`);
                 sparkle.style.left = `calc(50% + ${startX}px)`;
                 sparkle.style.top = `calc(50% + ${startY}px)`;
-                sparkle.style.animationDelay = `${i * 0.2}s`;
+                sparkle.style.animationDelay = `${i * 0.25}s`;
                 sparkle.style.animationDuration = `${2 + Math.random() * 1}s`;
 
                 saleLogoContainer.appendChild(sparkle);
@@ -778,7 +972,7 @@
         });
 
         // Add ripple effect to buttons on click
-        document.querySelectorAll('.cta-button, .maps-button, .social-btn, .whatsapp-btn').forEach(button => {
+        document.querySelectorAll('.cta-button, .maps-button, .social-btn, .whatsapp-btn, .size-button').forEach(button => {
             button.addEventListener('click', function(e) {
                 const rect = this.getBoundingClientRect();
                 const x = e.clientX - rect.left;
